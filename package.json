@@ -1,0 +1,6 @@
+{
+  "type": "module",
+  "volta": {
+    "node": "23.7.0"
+  }
+}

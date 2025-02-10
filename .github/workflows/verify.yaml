@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  test-ubuntu:
+  test-ubuntu-deno:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,7 +22,7 @@ jobs:
 
       - run: deno run -A main.ts
 
-  test-macos:
+  test-macos-deno:
     runs-on: macos-latest
 
     steps:
@@ -35,3 +35,25 @@ jobs:
           deno-version: v2.x
 
       - run: deno run -A main.ts
+
+  test-ubuntu-node:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - uses: volta-cli/action@v4
+
+      - run: node --no-warnings=ExperimentalWarning main.ts
+
+  test-macos-node:
+    runs-on: macos-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - uses: volta-cli/action@v4
+
+      - run: node --no-warnings=ExperimentalWarning main.ts
